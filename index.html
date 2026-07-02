@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>deMiguel — Modern Italian Grill</title>
+<meta name="description" content="Cocina italiana moderna al calor de la brasa. Parrilla a leña, pasta fresca y panadería propia en Cajicá. Reserva tu mesa por WhatsApp." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --green:#005A6D;
+    --green-dark:#004555;
+    --bg:#FFFFFF;
+    --ink:#000000;
+    --murray:#7E1946;
+    --border:#e5e5e5;
+    --soft:#f6f4f0;
+    --display:"Jost",system-ui,sans-serif;
+    --sans:"Raleway",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:120px;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.5;}
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3,h4{font-family:var(--display);color:var(--green);margin:0;line-height:1.1;letter-spacing:-0.01em;}
+  .wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem;}
+  .kicker{font-family:var(--display);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--green);}
+  .cat{font-family:var(--display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--green);}
+  .sub{font-family:var(--display);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--green);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;border-radius:999px;padding:.75rem 1.5rem;transition:.2s;cursor:pointer;font-family:var(--sans);font-size:.95rem;}
+  .btn-green{background:var(--green);color:#fff;}
+  .btn-green:hover{background:var(--green-dark);}
+  .btn-outline{border:2px solid var(--green);color:var(--green);background:transparent;}
+  .btn-outline:hover{background:var(--green);color:#fff;}
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:.2s;}
+  header.nav.scrolled{background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;height:110px;}
+  .logo{display:flex;align-items:center;flex:0 0 auto;}
+  .logo img{height:80px;width:auto;max-width:none;object-fit:contain;}
+  @media(min-width:640px){.logo img{height:100px;}}
+  @media(min-width:768px){.logo img{height:110px;}}
+  .nav-links{display:none;gap:1.75rem;font-size:.9rem;}
+  .nav-links a{font-weight:500;}
+  .nav-links a:hover{color:var(--green);}
+  @media(min-width:768px){.nav-links{display:flex;align-items:center;}}
+  .nav-right{display:flex;align-items:center;gap:.75rem;}
+  .lang{font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--green);border:1px solid rgba(0,90,109,.3);border-radius:999px;padding:.4rem .7rem;background:transparent;cursor:pointer;font-family:var(--sans);}
+  .lang:hover{color:var(--murray);}
+  .nav-reservar{display:none;}
+  @media(min-width:640px){.nav-reservar{display:inline-flex;font-size:.85rem;padding:.5rem 1rem;}}
+  .burger{display:inline-flex;background:none;border:none;color:var(--green);padding:.4rem;cursor:pointer;}
+  @media(min-width:768px){.burger{display:none;}}
+  .mobile-menu{display:none;border-top:1px solid var(--border);background:#fff;}
+  .mobile-menu.open{display:block;}
+  .mobile-menu .wrap{display:flex;flex-direction:column;gap:.75rem;padding-top:1rem;padding-bottom:1rem;}
+  .mobile-menu a{font-weight:500;padding:.25rem 0;}
+  section{padding:5rem 0;}
+  @media(min-width:768px){section{padding:7rem 0;}}
+  .soft{background:var(--soft);}
+  .grid{display:grid;gap:3rem;}
+  .heading h2{font-size:1.9rem;margin-top:.6rem;max-width:36rem;}
+  @media(min-width:768px){.heading h2{font-size:3rem;}}
+  .lead{font-size:1.1rem;color:#222;line-height:1.7;}
+  .hero{padding-top:7rem;padding-bottom:4rem;}
+  @media(min-width:768px){.hero{padding-top:9rem;padding-bottom:6rem;}}
+  .hero-grid{display:grid;gap:2.5rem;align-items:center;}
+  @media(min-width:768px){.hero-grid{grid-template-columns:7fr 5fr;}}
+  .hero-logo{height:140px;width:auto;max-width:100%;object-fit:contain;margin-bottom:2rem;}
+  @media(min-width:768px){.hero-logo{height:200px;}}
+  .hero h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:700;color:var(--green);line-height:1.05;letter-spacing:-.02em;}
+  .hero p.sub{font-size:1.2rem;color:#222;margin-top:1.4rem;max-width:34rem;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-top:2rem;}
+  .rating{font-size:.9rem;color:#444;}
+  .hero-photo{position:relative;}
+  .hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:1.5rem;box-shadow:0 20px 40px -20px rgba(0,90,109,.35);}
+  .badge{position:absolute;bottom:-1rem;right:-.5rem;background:#fff;border:1px solid var(--border);border-radius:1rem;padding:.6rem 1rem;box-shadow:0 8px 20px -8px rgba(0,0,0,.25);}
+  .badge .b1{font-family:var(--display);font-weight:600;color:var(--green);}
+  .badge .b2{font-size:.6rem;letter-spacing:.18em;color:#666;margin-top:.15rem;}
+  @media(max-width:639px){.badge{display:none;}}
+  .two{display:grid;gap:3rem;align-items:center;}
+  @media(min-width:768px){.two{grid-template-columns:5fr 7fr;}}
+  .two.rev{grid-template-columns:7fr 5fr;}
+  .ph img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:1.5rem;box-shadow:0 16px 36px -20px rgba(0,90,109,.3);}
+  .callout{border:2px solid var(--green);border-radius:1rem;padding:1.4rem;margin-top:2rem;color:var(--green);font-weight:500;max-width:34rem;}
+  .rows{margin-top:1rem;}
+  .row{padding:.75rem 0;border-bottom:1px solid rgba(0,0,0,.1);}
+  .row:last-child{border-bottom:none;}
+  .row-top{display:flex;align-items:baseline;gap:.75rem;}
+  .row-name{font-weight:600;color:var(--green);}
+  .leader{flex:1;border-bottom:1px dotted rgba(0,0,0,.28);transform:translateY(-4px);}
+  .row-price{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .copa{color:var(--murray);}
+  .slash{color:#999;margin:0 .25rem;}
+  .row-desc{font-size:.86rem;color:#444;margin-top:.25rem;line-height:1.4;}
+  .row-region{font-size:.78rem;color:#666;margin-top:.2rem;}
+  .note{font-size:.85rem;font-style:italic;color:#555;margin-top:.5rem;}
+  .menu-block{margin-bottom:3rem;}
+  .menu-cols{display:grid;gap:3rem;margin-top:3.5rem;}
+  @media(min-width:768px){.menu-cols{grid-template-columns:7fr 5fr;}}
+  @media(min-width:768px){.menu-cols.rev{grid-template-columns:5fr 7fr;}}
+  .sticky-img{position:sticky;top:6rem;}
+  .sticky-img img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:1.5rem;box-shadow:0 16px 36px -20px rgba(0,90,109,.3);}
+  .feature{margin-top:4rem;background:var(--green);color:#fff;border-radius:1.5rem;padding:2.5rem;display:flex;flex-direction:column;gap:1.5rem;justify-content:space-between;}
+  @media(min-width:768px){.feature{flex-direction:row;align-items:center;padding:3rem;}}
+  .feature h3{color:#fff;font-size:2rem;}
+  .feature .eyebrow{font-family:var(--display);font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.7);margin-bottom:.5rem;}
+  .feature .price{font-size:3.2rem;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;line-height:1;}
+  .feature p{color:rgba(255,255,255,.85);margin:.6rem 0 0;max-width:26rem;}
+  .ilim{border:2px solid var(--green);border-radius:1rem;padding:1.4rem;margin-top:2rem;display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;background:var(--soft);}
+  .ilim h4{font-family:var(--display);color:var(--green);font-size:1.2rem;margin:0;}
+  .ilim p{font-size:.86rem;color:#444;margin:.5rem 0 0;}
+  .ilim .price{font-size:1.8rem;font-weight:700;color:var(--murray);font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .label-line{display:flex;align-items:baseline;gap:.75rem;}
+  .script-note{font-family:var(--display);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:var(--murray);font-weight:600;}
+  .pan-grid{display:grid;gap:0 3rem;margin-top:1rem;}
+  @media(min-width:768px){.pan-grid{grid-template-columns:1fr 1fr;}}
+  .wine-grid{display:grid;gap:3rem;margin-top:3rem;}
+  @media(min-width:768px){.wine-grid{grid-template-columns:1fr 1fr;}}
+  .drink-grid{display:grid;gap:2.5rem;margin-top:3rem;}
+  @media(min-width:640px){.drink-grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:1024px){.drink-grid{grid-template-columns:1fr 1fr 1fr;}}
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:3rem;}
+  @media(min-width:768px){.gallery{grid-template-columns:1fr 1fr 1fr;gap:1rem;}}
+  .gallery img{width:100%;object-fit:cover;border-radius:1rem;aspect-ratio:1/1;}
+  .gallery img.tall{aspect-ratio:4/5;}
+  .visit{background:var(--green);color:#fff;}
+  .visit h2,.visit .kicker{color:#fff;}
+  .visit .kicker{color:rgba(255,255,255,.75);}
+  .visit-grid{display:grid;gap:3rem;}
+  @media(min-width:768px){.visit-grid{grid-template-columns:1fr 1fr;}}
+  .visit .sub{color:rgba(255,255,255,.75);}
+  .visit .info{margin-top:2rem;display:flex;flex-direction:column;gap:1.5rem;color:rgba(255,255,255,.92);}
+  .visit .big{font-size:1.1rem;}
+  .parking{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--green);font-weight:600;font-size:.85rem;border-radius:999px;padding:.5rem 1rem;width:fit-content;}
+  .hours{list-style:none;padding:0;margin:0;max-width:24rem;}
+  .hours li{display:flex;justify-content:space-between;padding:.15rem 0;}
+  .hours .closed{color:rgba(255,255,255,.6);font-weight:600;text-transform:uppercase;}
+  .visit a.link:hover{color:#fff;}
+  iframe.map{width:100%;height:360px;border:0;border-radius:1.5rem;box-shadow:0 20px 40px -16px rgba(0,0,0,.4);}
+  @media(min-width:768px){iframe.map{height:480px;}}
+  .maps-link{display:inline-block;margin-top:.75rem;font-size:.85rem;color:rgba(255,255,255,.8);text-decoration:underline;text-underline-offset:4px;}
+  footer{background:var(--soft);border-top:1px solid var(--border);padding:3rem 0;}
+  .foot-grid{display:grid;gap:2rem;align-items:start;}
+  @media(min-width:768px){.foot-grid{grid-template-columns:1fr 1fr 1fr;}}
+  .foot-logo img{height:48px;width:auto;max-width:none;object-fit:contain;}
+  .foot-tag{font-size:.85rem;color:#444;margin-top:1rem;max-width:18rem;}
+  .foot-info{font-size:.9rem;color:#333;display:flex;flex-direction:column;gap:.25rem;}
+  .foot-info a:hover{color:var(--green);}
+  .foot-right{display:flex;flex-direction:column;gap:1rem;}
+  @media(min-width:768px){.foot-right{align-items:flex-end;text-align:right;}}
+  .copyright{font-size:.72rem;color:#888;}
+  .sticky-cta{position:fixed;bottom:1rem;left:1rem;right:1rem;z-index:40;background:var(--green);color:#fff;text-align:center;font-weight:600;padding:.9rem;border-radius:999px;box-shadow:0 12px 28px -10px rgba(0,90,109,.5);}
+  @media(min-width:640px){.sticky-cta{display:none;}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const WA = "https://wa.me/573186665556?text=Hola,%20quiero%20reservar%20una%20mesa%20en%20deMiguel";
+const LOGO = "https://i.ibb.co/fYcW0p04/logo-blue.png";
+const P = {beef:"https://i.ibb.co/nMv2D0Mk/DSC04141-websize.jpg",amb1:"https://i.ibb.co/Kj0T87FP/DSC06401-websize.jpg",parrilla:"https://i.ibb.co/Zp4v09Jy/DSC04369-2-websize.jpg",menu1:"https://i.ibb.co/Y7wVgNz2/DSC04432-websize.jpg",menu2:"https://i.ibb.co/HT8K6M4B/DSC04648-3-websize.jpg",brunch:"https://i.ibb.co/LDhH6SnW/DSC06263-3-websize.jpg",postres:"https://i.ibb.co/xtm2wbt2/DSC03894-websize.jpg",vinos:"https://i.ibb.co/pB2Dy6MS/bar-1-websize.jpg"};
+const GAL = ["https://i.ibb.co/Kj0T87FP/DSC06401-websize.jpg","https://i.ibb.co/hR1HnbQh/DSC03664-websize.jpg","https://i.ibb.co/LDmryBhj/DSC03665-websize.jpg","https://i.ibb.co/991xCv49/DSC06255-websize.jpg","https://i.ibb.co/PsDRwTPG/DSC04218-websize.jpg","https://i.ibb.co/ccbrPHNG/cena-1-websize.jpg"];
+const t = {nav_historia:{es:"Historia",en:"Story"},nav_menu:{es:"Menú",en:"Menu"},nav_brunch:{es:"Brunch",en:"Brunch"},nav_vinos:{es:"Vinos",en:"Wines"},nav_visitanos:{es:"Visítanos",en:"Visit"},reservar:{es:"Reservar",en:"Book a table"},reservar_mesa:{es:"Reservar una mesa",en:"Book a table"},ver_menu:{es:"Ver el menú",en:"See the menu"},hero_title:{es:"Cocina italiana moderna, al calor de la brasa.",en:"Modern Italian cooking, over the live fire."},hero_sub:{es:"Una parrilla italiana a leña a las afueras de la ciudad. Todo hecho a mano.",en:"An Italian wood-fired grill on the edge of the city. Everything made by hand."},hero_rating:{es:"4.8 ★ en Google",en:"4.8 ★ on Google"},historia_kicker:{es:"La Historia",en:"Our Story"},historia_title:{es:"Una vida de cocina, un fuego propio.",en:"A life in the kitchen, a fire of our own."},historia_body_1:{es:"Michael deMiguel — Mike — nació en San Francisco, hijo de padre colombiano. Se formó entre San Francisco (RN74), Napa Valley, Barcelona, Miami y Bogotá, donde fundó La Xarcutería y Gringo Cantina. Autodidacta, obsesivo con el detalle.",en:"Michael deMiguel — Mike — was born in San Francisco to a Colombian father. He trained between San Francisco (RN74), Napa Valley, Barcelona, Miami and Bogotá, where he founded La Xarcutería and Gringo Cantina. Self-taught, obsessed with detail."},historia_body_2:{es:"En deMiguel todo se hace en casa: la pasta fresca, las salsas, el pan, la pastelería, el helado, además del maduraje propio de carnes y pescado. El pescado viene del Pacífico colombiano —un orgullo—. Abrimos en octubre de 2025: un destino genuino, a las afueras de la ciudad.",en:"At deMiguel everything is made in-house: fresh pasta, sauces, bread, pastry, ice cream, plus our own dry-aging of meats and fish. The fish comes from the Colombian Pacific — a point of pride. We opened in October 2025: a genuine destination just outside the city."},parrilla_kicker:{es:"La Parrilla",en:"The Grill"},parrilla_title:{es:"Todo pasa por el fuego.",en:"Everything touches the fire."},parrilla_body:{es:"Cortes premium con maduraje propio, pescado fresco, verduras sobre las brasas. Rústico y refinado a la vez.",en:"Premium dry-aged cuts, fresh fish, vegetables over the coals. Rustic and refined at once."},parrilla_callout:{es:"El corazón de la casa: una parrilla a leña encendida cada servicio.",en:"The heart of the house: a wood-fired grill lit for every service."},menu_kicker:{es:"El Menú",en:"The Menu"},menu_title:{es:"De la huerta y del fuego.",en:"From the garden and the fire."},c_compartir:{es:"Para Compartir",en:"To Share"},c_ensaladas:{es:"Ensaladas",en:"Salads"},c_sandwiches:{es:"Sándwiches",en:"Sandwiches"},sandwiches_note:{es:"Con ½ sopa del día, papas fritas o ensalada verde.",en:"Served with half soup of the day, fries or green salad."},c_clasicos:{es:"Los Clásicos",en:"The Classics"},c_parrilla:{es:"La Parrilla",en:"The Grill"},parrilla_note:{es:"Salsas: mantequilla y sal, gremolata, aceite de chile con balsámico, pimentones asados, mostaza. Cualquier gramaje disponible. Incluye un acompañamiento.",en:"Sauces: butter and salt, gremolata, chili oil with balsamic, roasted peppers, mustard. Any portion size available. Includes one side."},c_nacional:{es:"Nacional",en:"Local"},c_importada:{es:"Importada",en:"Imported"},c_acomp:{es:"Acompañamientos · 18K c/u",en:"Sides · 18K each"},cena_title:{es:"Cena de 3 Pasos",en:"3-Course Dinner"},cena_eyebrow:{es:"desde 5 PM",en:"from 5 PM"},cena_body:{es:"Tres tiempos para conocer la cocina. Disponible desde las 5 PM.",en:"Three courses to discover the kitchen. Available from 5 PM."},brunch_kicker:{es:"Brunch & Panadería",en:"Brunch & Bakery"},brunch_title:{es:"La mañana, con calma.",en:"Mornings, unhurried."},brunch_label:{es:"hasta la 1 PM",en:"until 1 PM"},panaderia_label:{es:"todo el día",en:"all day"},brunch_ilim_title:{es:"Brunch Ilimitado",en:"Unlimited Brunch"},brunch_ilim_body:{es:"72K por persona — con soda, jugo o café. Panadería no incluida.",en:"72K per person — with soda, juice or coffee. Bakery not included."},postres_kicker:{es:"Postres & Dulces",en:"Desserts & Sweets"},postres_title:{es:"Para terminar bien.",en:"To end well."},vinos_kicker:{es:"Vinos",en:"Wines"},vinos_title:{es:"Carta de vinos.",en:"Wine list."},vinos_note:{es:"Dos precios = copa / botella. Un precio = botella.",en:"Two prices = glass / bottle. Single price = bottle only."},bebidas_kicker:{es:"Bebidas",en:"Drinks"},bebidas_title:{es:"Para acompañar.",en:"To pair."},galeria_kicker:{es:"Galería",en:"Gallery"},galeria_title:{es:"Un vistazo a la casa.",en:"A glimpse of the house."},visit_kicker:{es:"Visítanos",en:"Visit Us"},visit_title:{es:"Te esperamos en Cajicá.",en:"We'll see you in Cajicá."},l_address:{es:"Dirección",en:"Address"},l_hours:{es:"Horario",en:"Hours"},l_phone:{es:"Teléfono · WhatsApp",en:"Phone · WhatsApp"},parking:{es:"Parqueadero gratis",en:"Free parking"},directions:{es:"Cómo llegar",en:"Get directions"},view_maps:{es:"Ver en Google Maps",en:"View on Google Maps"},closed:{es:"Cerrado",en:"Closed"},footer_tag:{es:"Cocina italiana moderna, al calor de la brasa.",en:"Modern Italian cooking, over the live fire."},footer_rights:{es:"Todos los derechos reservados.",en:"All rights reserved."}};
+const DAYS = [["Lunes","Monday","8:00 AM – 5:00 PM",false],["Martes","Tuesday","",true],["Miércoles","Wednesday","10:00 AM – 9:00 PM",false],["Jueves","Thursday","10:00 AM – 9:00 PM",false],["Viernes","Friday","10:00 AM – 10:00 PM",false],["Sábado","Saturday","8:00 AM – 10:00 PM",false],["Domingo","Sunday","8:00 AM – 8:00 PM",false]];
+function d(es,en){return {es:es,en:en};}
+const compartir=[{n:"Panza de Cerdo",p:"45K",x:d("Papas y lechugas en caldo de papa, mantequilla y trufa.","Potatoes and lettuces in potato broth, butter and truffle.")},{n:"Paté y Cebollas",p:"49K",x:d("Brioche a las brasas.","Grilled brioche.")},{n:"Beef Tartar",p:"47K",x:d("Crema de parmesano y trufa con gnocco fritto.","Parmesan and truffle cream with gnocco fritto.")},{n:"Crudo de Salmón",p:"48K",x:d("Ponzu, aceite de chile y eneldo.","Ponzu, chili oil and dill.")},{n:"Burratta y Zucchini",p:"53K",x:d("Pistacho, ajonjolí, chile y balsámico con pan a las brasas.","Pistachio, sesame, chili and balsamic with grilled bread.")},{n:"Pulpo y Sepias a la Parrilla",p:"68K",x:d("Papa, hinojo y albahaca.","Potato, fennel and basil.")},{n:"Tempura Mixta",p:"54K",x:d("Langostinos, sepia y zucchini.","Prawns, cuttlefish and zucchini.")}];
+const ensaladas=[{n:"Caesar",p:"44K",x:d("Col china, parmesano, crutones de masa madre, limón y anchoa.","Napa cabbage, parmesan, sourdough croutons, lemon and anchovy.")},{n:"Remolachas Asadas",p:"48K",x:d("Mezcla de verdes con queso de cabra, manzana, nueces, crutones de masa madre y vinagreta de miel.","Mixed greens with goat cheese, apple, walnuts, sourdough croutons and honey vinaigrette.")},{n:'Gorgonzola "Wedge"',p:"49K",x:d("Col china, tomates, porchetta y hierbas.","Napa cabbage, tomatoes, porchetta and herbs.")},{n:"Pollo Crispy",p:"45K",x:d("Mezcla de verdes con pepinos europeos y vinagreta de mostaza.","Mixed greens with European cucumbers and mustard vinaigrette.")},{n:"Atún",p:"55K",x:d("Mezcla de verdes, atún confitado, tomates, aceitunas, alcaparras y limón.","Mixed greens, confit tuna, tomatoes, olives, capers and lemon.")}];
+const sandwiches=[{n:"Pescado Asado",p:"45K",x:d("Pescado blanco, gremolata, tomate, lechuga y alioli.","White fish, gremolata, tomato, lettuce and aioli.")},{n:"Pollo Frito",p:"43K",x:d("Col china, albahaca, tomate y alioli.","Napa cabbage, basil, tomato and aioli.")},{n:"La Hamburguesa",p:"49K",x:d("3 quesos, balsámico, trufa y cebollín.","Three cheeses, balsamic, truffle and chive.")},{n:"Porchetta",p:"44K",x:d("Brócoli asado con balsámico y alioli.","Roasted broccoli with balsamic and aioli.")},{n:"El Club",p:"51K",x:d("Lomo de res, pollo, jamón, huevo, tomate, aguacate y lechugas.","Beef tenderloin, chicken, ham, egg, tomato, avocado and lettuces.")}];
+const clasicos=[{n:"Pizza Margarita",p:"36K",x:d("Con pepperoni +9K.","Add pepperoni +9K.")},{n:"Carbonara",p:"55K",x:d("Fettuccini, huevo, guanciale y parmesano.","Fettuccini, egg, guanciale and parmesan.")},{n:"Boloñesa",p:"57K",x:d("Fettuccini, ragù de res y cerdo, parmesano.","Fettuccini, beef and pork ragù, parmesan.")},{n:"Pesto",p:"45K",x:d("Fettuccini, albahaca, ajo, nueces y parmesano.","Fettuccini, basil, garlic, walnuts and parmesan.")},{n:"Albóndigas y Pomodoro",p:"65K",x:d("Tagliolini, cerdo, res y tomate.","Tagliolini, pork, beef and tomato.")},{n:"Agnolotti de Temporada",p:"67K",x:d("Pregunta al mesero por el relleno del día.","Ask your server for the filling of the day.")},{n:"Tagliolini Neri con Mariscos",p:"79K",x:d("Salsa de vino blanco, crema y chile.","White wine, cream and chili sauce.")},{n:"Lasaña Boloñesa",p:"49K",x:d("Pasta de espinacas, ragù de res y cerdo, bechamel y pomodoro.","Spinach pasta, beef and pork ragù, béchamel and pomodoro.")},{n:"Milanesa de Porchetta",p:"84K",x:d("Salsa pomodoro y fettuccine al tartufo.","Pomodoro sauce and truffle fettuccine.")},{n:"Mar y Tierra",p:"93K",x:d("Lomo de res a la parrilla encima de risotto con langostinos.","Grilled beef tenderloin over prawn risotto.")}];
+const nacional=[{n:"Atún",p:"75K",x:d("150 g","150 g")},{n:"Pechuga de Pollo",p:"67K",x:d("250 g","250 g")},{n:"Bondiola de Cerdo",p:"73K",x:d("300 g","300 g")},{n:"Lomo de Res",p:"88K",x:d("250 g","250 g")}];
+const importada=[{n:"Salmón",p:"79K",x:d("200 g","200 g")},{n:"Picaña — USDA Prime",p:"98K",x:d("200 g","200 g")},{n:"NY Strip — USDA Choice",p:"139K",x:d("300 g","300 g")},{n:"Ojo de Bife — Canada",p:"199K",x:d("400 g","400 g")}];
+const acomp=["Verduras de temporada","Papas en caldo o fritas","Ensalada verde","Risotto","Arroz blanco"];
+const brunch=[{n:"Arepa de Huevo",p:"24K",x:d("Con porchetta, suero y aceite de chile.","With porchetta, sour cream and chili oil.")},{n:"Changua Italiana",p:"27K",x:d("Caldo de parmesano, huevo, queso y pan.","Parmesan broth, egg, cheese and bread.")},{n:"Bistec al Caballo",p:"39K",x:d("Lomo de res, huevo, arroz, aguacate.","Beef tenderloin, egg, rice, avocado.")},{n:"Sándwich Combinado",p:"25K",x:d("Huevo, tomate, lechuga y alioli.","Egg, tomato, lettuce and aioli.")},{n:"Polenta y Huevos",p:"29K",x:d("Espinaca, champiñones y parmesano.","Spinach, mushrooms and parmesan.")},{n:"Tostada de Aguacate",p:"27K",x:d("Pan masa madre, aguacate, huevo, aceite de chile y limón.","Sourdough, avocado, egg, chili oil and lemon.")},{n:"Tostadas Francesas",p:"31K",x:d("Pan brioche, frutos rojos y miel de maple.","Brioche, berries and maple syrup.")},{n:"Granola",p:"29K",x:d("Yogurt, fruta, granola y miel.","Yogurt, fruit, granola and honey.")}];
+const panaderia=[{n:"Pan de Yuca",p:"8K"},{n:"Pan de Queso",p:"18K"},{n:"Pan Brioche",p:"11K / 21K",x:d("Flor / molde completo.","Single / full loaf.")},{n:"Babka",p:"15K / 21K / 33K",x:d("Porción / medio molde / molde completo.","Slice / half loaf / full loaf.")},{n:"Donut Berlinesas",p:"12K",x:d("Chocolate · frutos rojos · caramelo salado · tiramisú.","Chocolate · berries · salted caramel · tiramisú.")},{n:"Rollo de Canela",p:"15K"},{n:"Galletas",p:"11K",x:d("Trozos de chocolate · caramelo salado · mantequilla de maní.","Chocolate chunk · salted caramel · peanut butter.")},{n:"Pan de Masa Madre",p:"15K / 21K",x:d("500 g / 1 kg.","500 g / 1 kg.")}];
+const postres=[{n:"Tortas",p:"17–19K",x:d("Chocolate 19K · Vainilla 19K · Oliva 17K.","Chocolate 19K · Vanilla 19K · Olive oil 17K.")},{n:"Helados",p:"9K / 16K",x:d("Vainilla, chocolate, miel, yogurt, sorbete de mango y durazno, limón.","Vanilla, chocolate, honey, yogurt, mango-peach sorbet, lemon.")},{n:"Brownie sin Gluten",p:"11K",x:d("Hecho con harina de almendras.","Made with almond flour.")},{n:"Postres del Día",p:"",x:d("Tiramisú family-style, panna cotta y más. Pregunta al mesero.","Family-style tiramisú, panna cotta and more. Ask your server.")}];
+const W=(n,r,b,c)=>({n,r,b,c});
+const wines=[{t:d("Espumantes","Sparkling"),i:[W("Astoria Corderie, Prosecco Superiore","Veneto, Italia","256K"),W("Garibaldi Chardonnay","Rio Grande del Sur, Brasil","190K","51K"),W("Gustave Lorentz, Cremant","Alsace, Francia","324K"),W("Frerejean 1er Cru, Blanc de Blancs","Champaña, Francia","1.3M")]},{t:d("Vinos Especiales","Special Wines"),i:[W("Vendimias Tardías, GL, Gewürztraminer","Alsace, Francia (2020)","626K"),W("Vino Naranja Qui l'Eût Cru","Alsace, Francia","328K"),W("Moscatel, Espumante Asti (Demi Sec)","Río Grande del Sur, Brasil","176K")]},{t:d("Rosados","Rosés"),i:[W("Castel Firmian Fildirose, Pinot Grigio","Trentino, Italia","210K"),W("Gustave Lorentz Pinot Noir Rosé","Alsace, Francia","191K","51K")]},{t:d("Blancos · Sauvignon Blanc","Whites · Sauvignon Blanc"),i:[W("Mueller","Estiria, Austria","237K"),W("Chateau Fayau","Bordeaux, Francia","185K","49K"),W("Chateau du Mouret","Graves, Francia","258K")]},{t:d("Blancos · Chardonnay","Whites · Chardonnay"),i:[W("Waterstone","Napa Valley, EEUU","296K"),W("Felino","Luján de Cuyo, Argentina","235K"),W("Pascal Bouchard Le Classique","Chablis, Francia","350K")]},{t:d("Blancos · Otras Variedades","Whites · Other Varieties"),i:[W("Fillaboa Atlantik, Albariño","Rías Baixas, España","250K"),W("Lafou, Garnacha Blanca","Cataluña, España","248K"),W("Hiedler, Grüner Veltliner","Kamptal, Austria","245K"),W("Chateau Peyreblanque, Muscadelle","Graves, Francia","297K"),W("Felline, Vermentino","Puglia, Italia","188K"),W("Franz Haas, Pinot Grigio","Dolomiti, Italia","180K","48K"),W("Gustave Lorentz, Riesling Reserve","Alsace, Francia","283K"),W("Gustave Lorentz, Gewürztraminer","Alsace, Francia","381K")]},{t:d("Tintos · Pinot Noir","Reds · Pinot Noir"),i:[W("Rex Hill","Willamette Valley, EEUU","386K"),W("Hermandad","Mendoza, Argentina","426K"),W("Pascal Bouchard","Bourgogne, Francia","410K")]},{t:d("Tintos · Merlot","Reds · Merlot"),i:[W("Waterstone","Napa Valley, EEUU","308K"),W("Franz Haas","Dolomiti, Italia","326K")]},{t:d("Tintos · Cabernet Sauvignon","Reds · Cabernet Sauvignon"),i:[W("Groth","Oakville, EEUU","689K"),W("Felino","Luján de Cuyo, Argentina","198K","54K")]},{t:d("Tintos · Malbec","Reds · Malbec"),i:[W("Felino","Luján de Cuyo, Argentina","198K","54K"),W("Bramare","Valle de Uco, Argentina","582K")]},{t:d("Tintos · Otras Variedades","Reds · Other Varieties"),i:[W("Matchbook, Petit Syrah","Dunnigan Hills, EEUU","218K"),W("Viña Cobos, Chañares Estate, Cabernet Franc","Mendoza, Argentina","820K"),W("Cocodrilo, Blend","Mendoza, Argentina","442K"),W("Murua VS, Tempranillo","Rioja, España","333K"),W("Ciu Ciu, Lacrima di Morro d'Alba","Marche, Italia","219K","57K"),W("Caravaglio, Corinto Nero","Salina, Italia","226K"),W("Dievole Chianti Clásico, Sangiovese","Toscana, Italia","345K"),W("Podere Brizio, Brunello di Montalcino","Toscana, Italia","805K"),W("Colle Corviano, Montepulciano d'Abruzzo","Abruzzo, Italia","185K","49K"),W("Pertinance, Nebbiolo (Barolo)","Barolo, Italia","645K")]},{t:d("Vino Fortificado","Fortified Wine"),i:[W("González Byass, Amontillado","Jerez, España","48K"),W("González Byass, Oloroso","Jerez, España","43K"),W("Fonseca, Tawny 10 Años","Porto, Portugal","56K")]}];
+const bebidas=[{t:d("Cervezas","Beers"),i:[["Club Colombia","14K"],["Helles","16K"],["Hazy IPA","16K"],["Coronita","12K"]]},{t:d("Sodas Naturales","Natural Sodas"),i:[["Frutos Amarillos","14K"],["Frutos Rojos","14K"],["Jengibre","14K"]]},{t:d("Jugos Naturales","Fresh Juices"),i:[["Naranja","15K"],["Mandarina","15K"],["Mango","14K"],["Fresa","14K"],["Lulo","14K"]]},{t:d("Soft Drinks","Soft Drinks"),i:[["Limonada Natural","12K"],["Coca Cola","8K"],["Coca Zero","9K"],["1886 (Coca Art)","9K"],["Bretaña","8K"]]},{t:d("Mimosas","Mimosas"),i:[["Naranja","36K"],["Toronja","36K"],["Durazno","36K"],["Campari","41K"],["Botella","130K"]]},{t:d("Aguas","Waters"),i:[["Agua Filtrada","11K"],["Agua con Gas","11K"],["San Pellegrino","27K"],["Acqua Panna","27K"]]},{t:d("Café","Coffee"),i:[["Espresso","11K"],["Lungo","11K"],["Americano","11K"],["Aromática","11K"],["Macchiato","12K"],["Cappuccino","13K"],["Latte","14K"],["Prensa pequeña","12K"],["Prensa grande","17K"],["Chocolate","13K"],["Affogato","15K"]]}];
+let lang = "es";
+const L = k => (t[k] ? t[k][lang] : k);
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function row(it){const price = it.p ? `<span class="row-price">${esc(it.p)}</span>` : "";const desc = it.x ? `<div class="row-desc">${esc(it.x[lang]||it.x.es)}</div>` : "";return `<div class="row"><div class="row-top"><span class="row-name">${esc(it.n)}</span><span class="leader"></span>${price}</div>${desc}</div>`;}
+function wineRow(w){const price = w.c ? `<span class="copa">${esc(w.c)}</span><span class="slash">/</span><span>${esc(w.b)}</span>` : `<span>${esc(w.b)}</span>`;return `<div class="row"><div class="row-top"><span class="row-name">${esc(w.n)}</span><span class="leader"></span><span class="row-price">${price}</span></div><div class="row-region">${esc(w.r)}</div></div>`;}
+function rows(arr){return arr.map(row).join("");}
+function block(cat,arr,note){return `<div class="menu-block"><div class="cat">${esc(cat)}</div>${note?`<div class="note">${esc(note)}</div>`:""}<div class="rows">${rows(arr)}</div></div>`;}
+function heading(kicker,title){return `<div class="heading"><div class="kicker">${esc(kicker)}</div><h2>${esc(title)}</h2></div>`;}
+function render(){document.documentElement.lang = lang;const navLinks = [["historia","nav_historia"],["menu","nav_menu"],["brunch","nav_brunch"],["vinos","nav_vinos"],["visitanos","nav_visitanos"]];const linksHTML = navLinks.map(([id,k])=>`<a href="#${id}" data-close>${esc(L(k))}</a>`).join("");const html = `<header class="nav" id="nav"><div class="wrap nav-row"><a href="#top" class="logo" aria-label="deMiguel — Modern Italian Grill"><img src="${LOGO}" alt="deMiguel — Modern Italian Grill"></a><nav class="nav-links">${linksHTML}</nav><div class="nav-right"><button class="lang" id="langBtn">${lang==="es"?"EN":"ES"}</button><a href="${WA}" target="_blank" rel="noopener" class="btn btn-green nav-reservar">${esc(L("reservar"))}</a><button class="burger" id="burger" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div></div><div class="mobile-menu" id="mobileMenu"><div class="wrap">${linksHTML}</div></div></header><main id="top"><section class="hero"><div class="wrap hero-grid"><div><img class="hero-logo" src="${LOGO}" alt="deMiguel — Modern Italian Grill"><h1>${esc(L("hero_title"))}</h1><p class="sub">${esc(L("hero_sub"))}</p><div class="hero-cta"><a href="${WA}" target="_blank" rel="noopener" class="btn btn-green">${esc(L("reservar_mesa"))}</a><a href="#menu" class="btn btn-outline">${esc(L("ver_menu"))}</a><span class="rating">★ ${esc(L("hero_rating"))}</span></div></div><div class="hero-photo"><img src="${P.beef}" alt="deMiguel — cocina italiana a la brasa"><div class="badge"><div class="b1">a la brasa</div><div class="b2">WOOD-FIRED</div></div></div></div></section><section id="historia" class="soft"><div class="wrap two"><div class="ph"><img src="${P.amb1}" alt="Salón de deMiguel"></div><div>${heading(L("historia_kicker"),L("historia_title"))}<div style="margin-top:1.6rem;display:flex;flex-direction:column;gap:1.1rem;max-width:40rem;"><p class="lead">${esc(L("historia_body_1"))}</p><p class="lead">${esc(L("historia_body_2"))}</p></div></div></div></section><section id="parrilla"><div class="wrap two rev"><div>${heading(L("parrilla_kicker"),L("parrilla_title"))}<p class="lead" style="margin-top:1.6rem;max-width:32rem;">${esc(L("parrilla_body"))}</p><div class="callout">${esc(L("parrilla_callout"))}</div></div><div class="ph"><img src="${P.parrilla}" alt="La parrilla de deMiguel"></div></div></section><section id="menu" class="soft"><div class="wrap">${heading(L("menu_kicker"),L("menu_title"))}<div class="menu-cols"><div>${block(L("c_compartir"),compartir)}${block(L("c_ensaladas"),ensaladas)}${block(L("c_sandwiches"),sandwiches,L("sandwiches_note"))}</div><div><div class="sticky-img"><img src="${P.menu1}" alt="Plato del menú de deMiguel"></div></div></div><div class="menu-cols rev" style="margin-top:1rem;"><div><div class="sticky-img"><img src="${P.menu2}" alt="Plato del menú de deMiguel"></div></div><div>${block(L("c_clasicos"),clasicos)}<div class="menu-block"><div class="cat">${esc(L("c_parrilla"))}</div><div class="note">${esc(L("parrilla_note"))}</div><div style="margin-top:1.2rem;"><div class="sub">${esc(L("c_nacional"))}</div><div class="rows">${rows(nacional)}</div></div><div style="margin-top:1.2rem;"><div class="sub">${esc(L("c_importada"))}</div><div class="rows">${rows(importada)}</div></div><div style="margin-top:1.2rem;"><div class="sub">${esc(L("c_acomp"))}</div><p class="lead" style="font-size:.9rem;margin-top:.5rem;">${acomp.map(esc).join(" · ")}</p></div></div></div></div><div class="feature"><div><div class="eyebrow">${esc(L("cena_eyebrow"))}</div><h3>${esc(L("cena_title"))}</h3><p>${esc(L("cena_body"))}</p></div><div class="price">88K</div></div></div></section><section id="brunch"><div class="wrap">${heading(L("brunch_kicker"),L("brunch_title"))}<div class="menu-cols"><div><div class="label-line"><div class="cat">Brunch</div><span class="script-note">— ${esc(L("brunch_label"))}</span></div><div class="rows">${rows(brunch)}</div><div class="ilim"><div><h4>${esc(L("brunch_ilim_title"))}</h4><p>${esc(L("brunch_ilim_body"))}</p></div><div class="price">72K</div></div></div><div class="ph"><img src="${P.brunch}" alt="Brunch en deMiguel"></div></div><div style="margin-top:3rem;"><div class="label-line"><div class="cat">Panadería</div><span class="script-note">— ${esc(L("panaderia_label"))}</span></div><div class="pan-grid"><div class="rows">${rows(panaderia.slice(0,4))}</div><div class="rows">${rows(panaderia.slice(4))}</div></div></div></div></section><section id="postres" class="soft"><div class="wrap two"><div class="ph"><img src="${P.postres}" alt="Postres de deMiguel"></div><div>${heading(L("postres_kicker"),L("postres_title"))}<div class="rows" style="margin-top:1.4rem;">${rows(postres)}</div></div></div></section><section id="vinos"><div class="wrap"><div class="two rev" style="align-items:flex-start;"><div>${heading(L("vinos_kicker"),L("vinos_title"))}<div class="note">${esc(L("vinos_note"))}</div></div><div class="ph"><img src="${P.vinos}" alt="Bar de deMiguel" style="aspect-ratio:1/1;"></div></div><div class="wine-grid">${wines.map(g=>`<div><div class="cat">${esc(g.t[lang])}</div><div class="rows">${g.i.map(wineRow).join("")}</div></div>`).join("")}</div></div></section><section id="bebidas" class="soft"><div class="wrap">${heading(L("bebidas_kicker"),L("bebidas_title"))}<div class="drink-grid">${bebidas.map(g=>`<div><div class="cat" style="margin-bottom:.5rem;">${esc(g.t[lang])}</div><div class="rows">${g.i.map(it=>row({n:it[0],p:it[1]})).join("")}</div></div>`).join("")}</div></div></section><section id="galeria"><div class="wrap" style="text-align:center;">${heading(L("galeria_kicker"),L("galeria_title"))}</div><div class="wrap"><div class="gallery">${GAL.map((src,i)=>`<img src="${src}" alt="deMiguel" class="${i%5===0?"tall":""}">`).join("")}</div></div></section><section id="visitanos" class="visit"><div class="wrap visit-grid"><div><div class="kicker">${esc(L("visit_kicker"))}</div><h2 style="margin-top:.5rem;font-size:2rem;">${esc(L("visit_title"))}</h2><div class="info"><div><div class="sub" style="color:rgba(255,255,255,.7);margin-bottom:.3rem;">${esc(L("l_address"))}</div><div class="big">Cra 5B Este #3-300 Sur, Local 2</div><div class="big">Cajicá, Cundinamarca</div></div><div class="parking"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11M5 11h14M5 11v6a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-6"/></svg>${esc(L("parking"))}</div><div><div class="sub" style="color:rgba(255,255,255,.7);margin-bottom:.4rem;">${esc(L("l_hours"))}</div><ul class="hours">${DAYS.map(dd=>`<li><span>${esc(lang==="es"?dd[0]:dd[1])}</span><span class="${dd[3]?"closed":""}">${dd[3]?esc(L("closed")).toUpperCase():esc(dd[2])}</span></li>`).join("")}</ul></div><div><div class="sub" style="color:rgba(255,255,255,.7);margin-bottom:.3rem;">${esc(L("l_phone"))}</div><a class="link big" href="tel:+573186665556">+57 318 666 5556</a><div style="margin-top:.25rem;"><a class="link" href="https://instagram.com/restaurante.demiguel" target="_blank" rel="noopener">@restaurante.demiguel</a></div></div><div style="display:flex;flex-wrap:wrap;gap:.75rem;padding-top:.5rem;"><a href="${WA}" target="_blank" rel="noopener" class="btn btn-green">${esc(L("reservar_mesa"))}</a><a href="https://www.google.com/maps/dir/?api=1&destination=4.9057383,-74.0250277&destination_place_id=ChIJCf3ryjZ3QI4R3dbdmxrU-0g" target="_blank" rel="noopener" class="btn" style="border:2px solid #fff;color:#fff;">${esc(L("directions"))}</a></div></div></div><div><iframe class="map" title="deMiguel en Google Maps" loading="lazy" src="https://maps.google.com/maps?q=4.9057383,-74.0250277&z=16&output=embed"></iframe><a class="maps-link" href="https://maps.google.com/?cid=5259030200634431197" target="_blank" rel="noopener">${esc(L("view_maps"))} →</a></div></div></section></main><footer><div class="wrap foot-grid"><div><div class="foot-logo"><img src="${LOGO}" alt="deMiguel — Modern Italian Grill"></div><p class="foot-tag">${esc(L("footer_tag"))}</p></div><div class="foot-info"><div>Cra 5B Este #3-300 Sur, Local 2</div><div>Cajicá, Cundinamarca</div><div style="padding-top:.5rem;"><a href="tel:+573186665556">+57 318 666 5556</a></div><div><a href="https://instagram.com/restaurante.demiguel" target="_blank" rel="noopener">@restaurante.demiguel</a></div></div><div class="foot-right"><a href="${WA}" target="_blank" rel="noopener" class="btn btn-green" style="padding:.6rem 1.25rem;">${esc(L("reservar"))}</a><p class="copyright">© ${new Date().getFullYear()} deMiguel. ${esc(L("footer_rights"))}</p></div></div></footer><a href="${WA}" target="_blank" rel="noopener" class="sticky-cta">${esc(L("reservar_mesa"))}</a>`;document.getElementById("root").innerHTML = html;attach();}
+function attach(){const nav = document.getElementById("nav");const onScroll = ()=> nav.classList.toggle("scrolled", window.scrollY>20);onScroll(); window.onscroll = onScroll;document.getElementById("langBtn").onclick = ()=>{ lang = lang==="es"?"en":"es"; render(); };const mm = document.getElementById("mobileMenu");document.getElementById("burger").onclick = ()=> mm.classList.toggle("open");document.querySelectorAll("[data-close]").forEach(a=> a.addEventListener("click", ()=> mm.classList.remove("open")));
+}
+render();
+</script>
+</body>
+</html>
