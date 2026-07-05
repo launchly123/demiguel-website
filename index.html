@@ -192,5 +192,58 @@ function attach(){const nav = document.getElementById("nav");const onScroll = ()
 }
 render();
 </script>
+<!-- CMS content sync: applies edits published from the Agency Console.
+     Position-keyed to match the CMS editor. Fails silently if the CMS is
+     unreachable, so the site always falls back to its built-in content. -->
+<script>
+(function () {
+  try {
+    var CMS = "https://cms-omega-seven.vercel.app";
+    var SLUG = "demiguel-website";
+    var SKIP = "header,nav,a,button,script,style,svg,select,textarea,input,form,iframe";
+    var overrides = null, mo = null;
+
+    function isTextLeaf(el) {
+      if (el.childElementCount !== 0) return false;
+      if (!(el.textContent || "").trim()) return false;
+      if (el.closest(SKIP)) return false;
+      return /^(H1|H2|H3|H4|H5|H6|P|LI|BLOCKQUOTE|FIGCAPTION|TD|TH|SPAN|DIV|LABEL|EM|STRONG|SMALL|B|I)$/.test(el.tagName);
+    }
+
+    function apply() {
+      if (!overrides || !document.body) return;
+      if (mo) mo.disconnect();
+      try {
+        var all = document.body.getElementsByTagName("*");
+        var ti = 0, ii = 0;
+        for (var i = 0; i < all.length; i++) {
+          var el = all[i];
+          if (el.tagName === "IMG") {
+            if (el.closest("header,nav")) continue;
+            var ik = "i" + (ii++);
+            if (overrides[ik]) el.src = overrides[ik];
+          } else if (isTextLeaf(el)) {
+            var tk = "t" + (ti++);
+            if (overrides[tk] != null) el.textContent = overrides[tk];
+          }
+        }
+      } catch (e) {}
+      if (mo) mo.observe(document.body, { childList: true, subtree: true });
+    }
+
+    fetch(CMS + "/api/public/overrides/" + SLUG)
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        overrides = (d && d.overrides) || {};
+        if (!Object.keys(overrides).length) return;
+        mo = new MutationObserver(function () {
+          clearTimeout(mo._t); mo._t = setTimeout(apply, 120);
+        });
+        apply();
+      })
+      .catch(function () {});
+  } catch (e) {}
+})();
+</script>
 </body>
 </html>
